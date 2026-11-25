@@ -673,6 +673,8 @@ class ColorAttentionExperiment:
             "complete": False,
             "stimuli": [],
             "ball_radius": ball_radius,
+            "screen_width_px": width,
+            "screen_height_px": height,
         }
         self.canvas.delete("all")
         self.canvas.configure(background=BACKGROUND)
@@ -958,6 +960,8 @@ class ColorAttentionExperiment:
             "reveal_order",
             "appearance_elapsed_ms",
             "round_duration_ms",
+            "screen_width_px",
+            "screen_height_px",
         ]
         with self.file_paths["stimuli"].open(
             "w", newline="", encoding="utf-8-sig"
@@ -990,6 +994,8 @@ class ColorAttentionExperiment:
                             )
                             if started_ns
                             else 0,
+                            "screen_width_px": meta["screen_width_px"],
+                            "screen_height_px": meta["screen_height_px"],
                         }
                     )
 

@@ -53,6 +53,19 @@ python .\tobii_spark_color_attention.py
 - `*_events.csv` — เหตุการณ์ glance และ focus loss พร้อมระยะเวลา
 - `*_stimuli.csv` — สี, ตำแหน่ง, ลำดับและเวลาที่วงกลมแต่ละลูกปรากฏ
 
+## สร้าง Gaze Path และแยกไฟล์รายผู้เข้าร่วม
+
+ติดตั้ง Matplotlib เพิ่มใน environment เดียวกับ Tobii SDK แล้วรันหลังจบการทดลอง:
+
+```powershell
+python -m pip install -r .\requirements-analysis.txt
+python .\analyze_gaze_results.py
+```
+
+ผลจะอยู่ใน `data/participants/participant_001/`, `participant_002/` ตามลำดับชื่อผู้เข้าร่วม แต่ละโฟลเดอร์มี `gaze_path.png` และไฟล์ gaze ดิบ, summary, events และ stimuli ของคนนั้น ส่วน `participant_index.csv` ใช้จับคู่รหัสกับชื่อผู้เข้าร่วม ไฟล์ข้อมูลและกราฟอยู่ใน `data/` ซึ่ง Git ไม่อัปโหลด
+
+กราฟใช้พิกัดหน้าจอจากข้อมูล stimulus ถ้ามี หากเป็นข้อมูลเก่าที่ไม่มี resolution metadata โปรแกรมจะใช้ขนาดจอปัจจุบัน สามารถกำหนดเองได้ เช่น `python .\analyze_gaze_results.py --screen-width 1920 --screen-height 1080`
+
 ## ข้อควรทราบ
 
 ไฟล์สรุปนี้เป็นการจัดกลุ่ม sample ตามเกณฑ์ที่ระบุไว้ในโปรแกรม ไม่ใช่การตรวจ fixation แบบผู้ผลิตหรือการวิเคราะห์ทางสถิติ ผลควรตรวจสอบกับการสอบเทียบ คุณภาพสัญญาณ และแผนวิเคราะห์ของงานวิจัยก่อนนำไปสรุปผล
