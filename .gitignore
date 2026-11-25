@@ -1,0 +1,8 @@
+# Experimental gaze data contains participant information; keep it out of Git.
+data/
+
+# Python local/runtime artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
