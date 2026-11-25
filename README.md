@@ -53,6 +53,24 @@ python .\tobii_spark_color_attention.py
 - `*_events.csv` — เหตุการณ์ glance และ focus loss พร้อมระยะเวลา
 - `*_stimuli.csv` — สี, ตำแหน่ง, ลำดับและเวลาที่วงกลมแต่ละลูกปรากฏ
 
+## ทดลองด้วยเมาส์ (ไม่ใช้ Tobii)
+
+ใช้โปรแกรมนี้เพื่อทดสอบหน้าจอ ลำดับสิ่งเร้า และการประมวลผลที่บ้าน โดย pointer ของเมาส์จำลองตำแหน่ง gaze:
+
+โหมดนี้ใช้ Python ที่มี Tkinter/Tcl-Tk และไม่ต้องมี Tobii Spark หรือ Tobii Pro SDK
+
+~~~powershell
+python .\mouse_trial_gui.py
+~~~
+
+เพิ่ม --fast เพื่อย่อช่วงพัก/นับถอยหลัง/แสดงสิ่งเร้าสำหรับตรวจการทำงานของหน้าจอ:
+
+~~~powershell
+python .\mouse_trial_gui.py --fast
+~~~
+
+ไฟล์จะบันทึกในโฟลเดอร์ data โดยมี source_device=mouse_simulation และใช้รูปแบบ CSV เดียวกับโปรแกรม Tobii จึงนำไปสร้าง PNG และแยกไฟล์รายผู้เข้าร่วมด้วย analyze_gaze_results.py ได้ ข้อมูลจากเมาส์เป็นข้อมูลจำลอง ไม่ใช่ข้อมูล eye-tracking สำหรับใช้สรุปผลวิจัย
+
 ## สร้าง Gaze Path และแยกไฟล์รายผู้เข้าร่วม
 
 ติดตั้ง Matplotlib เพิ่มใน environment เดียวกับ Tobii SDK แล้วรันหลังจบการทดลอง:

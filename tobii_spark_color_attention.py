@@ -19,7 +19,7 @@ from typing import Any
 
 try:
     import tobii_research as tr
-except ImportError:
+except (ImportError, OSError):
     tr = None
 
 
@@ -48,6 +48,7 @@ REST_BACKGROUND = "#808080"
 
 RAW_FIELDS = [
     "participant_name",
+    "source_device",
     "session_elapsed_ms",
     "local_time_ns",
     "tobii_system_time_stamp",
@@ -540,6 +541,7 @@ class ColorAttentionExperiment:
         self.gaze_queue.put(
             {
                 "participant_name": self.participant_name,
+                "source_device": "tobii_spark",
                 "session_elapsed_ms": (sample_ns - self.session_origin_ns) / 1_000_000,
                 "local_time_ns": sample_ns,
                 "tobii_system_time_stamp": data.get("system_time_stamp", ""),

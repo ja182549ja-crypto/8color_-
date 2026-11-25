@@ -39,6 +39,7 @@ ROUND_COUNT = 4
 MAX_CONNECTED_GAP_NS = 100_000_000
 RAW_GAZE_FIELDS = [
     "participant_name",
+    "source_device",
     "session_elapsed_ms",
     "local_time_ns",
     "tobii_system_time_stamp",
